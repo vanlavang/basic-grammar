@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGLISH TENSES - COMPARE 3 TENSES</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --col-bg: #ffffff;
+            --border: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --danger: #ef4444;
+            --danger-hover: #dc2828;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Aptos', 'Segoe UI', Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
+        header { background-color: #1e293b; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        h1 { font-size: 1.5rem; font-weight: bold; margin-bottom: 0.25rem; }
+        .header-sub { font-size: 0.9rem; color: #cbd5e1; }
+        
+        .btn { padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-primary:hover { background-color: var(--primary-hover); }
+        .btn-danger { background-color: var(--danger); color: white; }
+        .btn-danger:hover { background-color: var(--danger-hover); }
+        .btn-outline { background-color: transparent; border: 1px solid var(--border); color: var(--text-dark); }
+        .btn-outline:hover { background-color: #f1f5f9; }
+
+        .main-container { padding: 1.5rem; max-width: 1900px; margin: 0 auto; }
+        .columns-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+        
+        .tense-column { background-color: var(--col-bg); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; min-height: 500px; }
+        .col-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; padding: 3rem 1rem; text-align: center; }
+        .col-empty .icon { font-size: 3rem; color: #cbd5e1; margin-bottom: 1rem; }
+        .col-empty p { color: var(--text-light); margin-bottom: 1.5rem; }
+        
+        .col-header { background-color: #f8fafc; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; }
+        .col-title { flex: 1; }
+        .col-title h2 { font-size: 1.25rem; color: var(--primary); margin-bottom: 0.25rem; }
+        .col-title span { font-size: 0.85rem; color: var(--text-light); }
+        .col-actions { display: flex; gap: 0.5rem; }
+        .col-actions .btn { padding: 0.25rem 0.5rem; font-size: 0.8rem; }
+        
+        .toggle-group { display: flex; background-color: #f1f5f9; padding: 0.5rem; justify-content: center; border-bottom: 2px solid var(--primary); position: sticky; top: 76px; z-index: 9; }
+        .toggle-btn { flex: 1; padding: 0.5rem; text-align: center; font-weight: bold; font-size: 0.9rem; cursor: pointer; border-radius: 6px; border: none; background: transparent; color: var(--text-light); transition: 0.2s; }
+        .toggle-btn.active { background-color: white; color: var(--primary); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+        .col-content { padding: 1.5rem; overflow-y: auto; flex: 1; }
+        .section { margin-bottom: 1.5rem; }
+        .section-title { font-weight: bold; color: #1e293b; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        
+        .formula-box { background-color: #eff6ff; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); margin-bottom: 0.75rem; font-family: monospace; font-size: 1.05rem; }
+        .formula-row { display: flex; margin-bottom: 0.25rem; }
+        .formula-row:last-child { margin-bottom: 0; }
+        .formula-label { font-weight: bold; width: 30px; color: var(--primary); }
+        
+        .keyword-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { background-color: #f1f5f9; border: 1px solid var(--border); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.85rem; font-weight: 500; }
+        
+        .example-box { background-color: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.5rem; border-left: 3px solid var(--success); }
+        .ex-en { font-weight: bold; color: #0f172a; }
+        .ex-vi { font-size: 0.9rem; color: var(--text-light); font-style: italic; }
+        
+        ul { padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        .warning-box { background-color: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid var(--warning); padding: 1rem; border-radius: 6px; font-size: 0.9rem; }
+
+        /* Comparison Section */
+        .comparison-section { background-color: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid var(--border); display: none; }
+        .comparison-title { text-align: center; font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid var(--border); padding: 1rem; vertical-align: top; }
+        th { background-color: #f8fafc; font-weight: bold; color: #1e293b; text-align: center; width: 33.33%; }
+        td { font-size: 0.95rem; }
+        .comp-label { font-size: 0.8rem; text-transform: uppercase; font-weight: bold; color: var(--text-light); margin-bottom: 0.5rem; display: block; }
+        .badge-type { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; background: #e2e8f0; margin-left: 5px; vertical-align: middle; }
+
+        /* Modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-content { background-color: white; border-radius: 12px; width: 90%; max-width: 600px; max-height: 80vh; display: flex; flex-direction: column; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .modal-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .modal-header h2 { font-size: 1.25rem; }
+        .close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); }
+        .modal-search { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
+        .modal-search input { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; outline: none; }
+        .modal-search input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+        .tense-list { padding: 1rem; overflow-y: auto; display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+        .tense-item { text-align: left; padding: 1rem; background-color: white; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .tense-item:hover { background-color: #f1f5f9; border-color: #cbd5e1; }
+        .tense-item-en { font-weight: bold; font-size: 1.1rem; color: var(--primary); display: block; }
+        .tense-item-vi { font-size: 0.9rem; color: var(--text-light); }
+
+        @media (max-width: 1024px) {
+            .columns-wrapper { grid-template-columns: 1fr; }
+            .comparison-section table, .comparison-section th, .comparison-section td { display: block; width: 100%; }
+            .comparison-section tr { display: flex; flex-direction: column; margin-bottom: 1rem; border: 1px solid var(--border); }
+            .comparison-section th { border: none; border-bottom: 2px solid var(--primary); background-color: #f1f5f9; }
+            .comparison-section td { border: none; border-bottom: 1px solid var(--border); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>ENGLISH TENSES</h1>
+            <div class="header-sub">Bảng tương tác so sánh các thì tiếng Anh - Phân biệt Động từ To Be và Động từ Thường</div>
+        </div>
+        <button class="btn btn-danger" onclick="clearAll()">XÓA TẤT CẢ CỘT</button>
+    </header>
+
+    <div class="main-container">
+        <!-- Columns -->
+        <div class="columns-wrapper">
+            <div class="tense-column" id="col-1"><div class="col-empty"><div class="icon">🔍</div><p>Cột trống. Chọn một thì.</p><button class="btn btn-primary" onclick="openModal(1)">+ CHỌN THÌ</button></div></div>
+            <div class="tense-column" id="col-2"><div class="col-empty"><div class="icon">🔍</div><p>Cột trống. Chọn một thì.</p><button class="btn btn-primary" onclick="openModal(2)">+ CHỌN THÌ</button></div></div>
+            <div class="tense-column" id="col-3"><div class="col-empty"><div class="icon">🔍</div><p>Cột trống. Chọn một thì.</p><button class="btn btn-primary" onclick="openModal(3)">+ CHỌN THÌ</button></div></div>
+        </div>
+
+        <!-- Comparison Section -->
+        <div class="comparison-section" id="comparison-section">
+            <h2 class="comparison-title">BẢNG SO SÁNH</h2>
+            <table>
+                <thead id="comp-head"></thead>
+                <tbody id="comp-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Selection -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Chọn Thì (Select a Tense)</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-search">
+                <input type="text" id="search-input" placeholder="Tìm kiếm theo tên tiếng Anh hoặc tiếng Việt..." onkeyup="filterTenses()">
+            </div>
+            <div class="tense-list" id="tense-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Data for 12 Tenses (Separated To Be & Action Verbs)
+        const tensesData = [
+            {
+                id: 'present_simple', nameEn: 'Present Simple', nameVi: 'Hiện tại đơn',
+                desc: 'Diễn tả thói quen, sự thật hiển nhiên, chân lý, lịch trình.',
+                keywords: ['always', 'usually', 'often', 'sometimes', 'never', 'every day/week'],
+                usages: [
+                    { rule: 'Thói quen ở hiện tại', ex: 'I always wake up at 6.' },
+                    { rule: 'Sự thật hiển nhiên', ex: 'Water boils at 100 degrees.' },
+                    { rule: 'Lịch trình cố định', ex: 'The train leaves at 7 PM.' }
+                ],
+                exceptions: 'Thường nhầm với Hiện tại tiếp diễn. HTĐ dùng cho việc thường xuyên, HTTD dùng cho việc đang xảy ra.',
+                tobe: {
+                    formula: { aff: 'S + am/is/are + N/Adj', neg: 'S + am/is/are not + N/Adj', yno: 'Am/Is/Are + S + N/Adj?', wh: 'Wh- + am/is/are + S + N/Adj?' },
+                    rules: 'I ➜ am. He/She/It/Số ít ➜ is. You/We/They/Số nhiều ➜ are.',
+                    examples: [
+                        { en: 'I am a student.', vi: 'Tôi là học sinh.' },
+                        { en: 'She is not tired.', vi: 'Cô ấy không mệt.' },
+                        { en: 'Are they happy?', vi: 'Họ có vui không?' }
+                    ],
+                    compVerb: 'I am happy every day.'
+                },
+                action: {
+                    formula: { aff: 'S + V(s/es)', neg: 'S + do/does not + V', yno: 'Do/Does + S + V?', wh: 'Wh- + do/does + S + V?' },
+                    rules: 'Thêm s/es với ngôi thứ 3 số ít. Phủ định mượn do/does, động từ chính trả về nguyên thể.',
+                    examples: [
+                        { en: 'He studies English every day.', vi: 'Anh ấy học tiếng Anh mỗi ngày.' },
+                        { en: 'They do not like fish.', vi: 'Họ không thích cá.' },
+                        { en: 'Does she play tennis?', vi: 'Cô ấy có chơi tennis không?' }
+                    ],
+                    compVerb: 'I study English every day.'
+                }
+            },
+            {
+                id: 'present_continuous', nameEn: 'Present Continuous', nameVi: 'Hiện tại tiếp diễn',
+                desc: 'Diễn tả hành động đang diễn ra tại thời điểm nói hoặc xung quanh thời điểm nói.',
+                keywords: ['now', 'right now', 'at the moment', 'Look!', 'Listen!'],
+                usages: [
+                    { rule: 'Đang diễn ra lúc nói', ex: 'I am eating dinner.' },
+                    { rule: 'Sắp xếp cố định trong tương lai gần', ex: 'I am meeting him tomorrow.' }
+                ],
+                exceptions: 'KHÔNG dùng với động từ chỉ tri giác, nhận thức (know, like, want).',
+                tobe: {
+                    formula: { aff: 'S + am/is/are + being + Adj', neg: 'S + am/is/are not + being + Adj', yno: 'Am/Is/Are + S + being + Adj?', wh: 'Wh- + am/is/are + S + being + Adj?' },
+                    rules: 'Chỉ dùng "being" để nhấn mạnh một cách cư xử bất thường, tạm thời.',
+                    examples: [
+                        { en: 'He is being very rude today.', vi: 'Hôm nay anh ta đang cư xử rất thô lỗ (bình thường không thế).' },
+                        { en: 'Why are you being so silly?', vi: 'Sao tự nhiên bạn lại cư xử ngớ ngẩn thế?' }
+                    ],
+                    compVerb: 'I am being quiet right now.'
+                },
+                action: {
+                    formula: { aff: 'S + am/is/are + V-ing', neg: 'S + am/is/are not + V-ing', yno: 'Am/Is/Are + S + V-ing?', wh: 'Wh- + am/is/are + S + V-ing?' },
+                    rules: 'Thêm "ing" sau động từ. Nếu tận cùng là "e" thì bỏ "e" thêm "ing".',
+                    examples: [
+                        { en: 'She is studying English now.', vi: 'Cô ấy đang học tiếng Anh bây giờ.' },
+                        { en: 'Are you listening?', vi: 'Bạn có đang nghe không?' }
+                    ],
+                    compVerb: 'I am studying English right now.'
+                }
+            },
+            {
+                id: 'present_perfect', nameEn: 'Present Perfect', nameVi: 'Hiện tại hoàn thành',
+                desc: 'Diễn tả hành động bắt đầu trong quá khứ kéo dài đến hiện tại, hoặc hành động đã xong nhưng kết quả còn ở hiện tại.',
+                keywords: ['already', 'yet', 'just', 'ever', 'never', 'since + mốc tg', 'for + khoảng tg'],
+                usages: [
+                    { rule: 'Kéo dài từ QK đến HT', ex: 'We have lived here since 2010.' },
+                    { rule: 'Kinh nghiệm trải qua', ex: 'I have seen this movie twice.' }
+                ],
+                exceptions: 'Thường nhầm với Quá khứ đơn. HTHT không đi kèm thời gian kết thúc rõ ràng (yesterday, ago).',
+                tobe: {
+                    formula: { aff: 'S + have/has + been + N/Adj', neg: 'S + have/has not + been + N/Adj', yno: 'Have/Has + S + been + N/Adj?', wh: 'Wh- + have/has + S + been + N/Adj?' },
+                    rules: 'V3 của to be là "been". I/You/We/They ➜ have been. He/She/It ➜ has been.',
+                    examples: [
+                        { en: 'I have been a teacher for 5 years.', vi: 'Tôi đã làm giáo viên được 5 năm rồi.' },
+                        { en: 'She has been sick since Monday.', vi: 'Cô ấy đã bị ốm từ thứ Hai.' }
+                    ],
+                    compVerb: 'I have been a student here for 3 years.'
+                },
+                action: {
+                    formula: { aff: 'S + have/has + V3/ed', neg: 'S + have/has not + V3/ed', yno: 'Have/Has + S + V3/ed?', wh: 'Wh- + have/has + S + V3/ed?' },
+                    rules: 'Sử dụng động từ cột 3 (V3) hoặc thêm -ed.',
+                    examples: [
+                        { en: 'I have studied English for 3 years.', vi: 'Tôi đã học tiếng Anh được 3 năm.' },
+                        { en: 'He has just finished work.', vi: 'Anh ấy vừa mới làm xong việc.' }
+                    ],
+                    compVerb: 'I have studied English for 3 years.'
+                }
+            },
+            {
+                id: 'present_perfect_continuous', nameEn: 'Present Perfect Continuous', nameVi: 'Hiện tại hoàn thành tiếp diễn',
+                desc: 'Nhấn mạnh tính liên tục của một hành động bắt đầu từ quá khứ và vẫn đang tiếp diễn ở hiện tại.',
+                keywords: ['all day', 'all week', 'for + khoảng tg', 'since + mốc tg', 'lately'],
+                usages: [
+                    { rule: 'Nhấn mạnh tính liên tục', ex: 'He has been waiting since 2 PM.' },
+                    { rule: 'Giải thích nguyên nhân hiện tại', ex: 'I am tired because I have been running.' }
+                ],
+                exceptions: 'Không dùng với các động từ trạng thái (know, like, want).',
+                tobe: {
+                    formula: { aff: 'Không dùng', neg: 'Không dùng', yno: 'Không dùng', wh: 'Không dùng' },
+                    rules: 'Thì này rất hiếm hoặc không bao giờ dùng với "To Be". Thay vào đó, hãy dùng Hiện tại hoàn thành đơn (have/has been).',
+                    examples: [
+                        { en: '❌ I have been being sick.', vi: 'Sai ngữ pháp.' },
+                        { en: '✅ I have been sick.', vi: 'Tôi đã bị ốm. (Dùng HT Hoàn thành)' }
+                    ],
+                    compVerb: '(Không áp dụng)'
+                },
+                action: {
+                    formula: { aff: 'S + have/has been + V-ing', neg: 'S + have/has not been + V-ing', yno: 'Have/Has + S + been + V-ing?', wh: 'Wh- + have/has + S + been + V-ing?' },
+                    rules: 'Dùng have/has + been + V-ing để nhấn mạnh quá trình.',
+                    examples: [
+                        { en: 'I have been studying English all morning.', vi: 'Tôi đã học tiếng Anh cả buổi sáng nay.' },
+                        { en: 'It has been raining for 3 hours.', vi: 'Trời đã mưa rả rích 3 tiếng rồi.' }
+                    ],
+                    compVerb: 'I have been studying English all day.'
+                }
+            },
+            {
+                id: 'past_simple', nameEn: 'Past Simple', nameVi: 'Quá khứ đơn',
+                desc: 'Diễn tả hành động đã xảy ra và kết thúc hoàn toàn tại một thời điểm xác định trong quá khứ.',
+                keywords: ['yesterday', 'last night/week', '... ago', 'in 1990'],
+                usages: [
+                    { rule: 'Kết thúc trong QK', ex: 'I bought this car in 2020.' },
+                    { rule: 'Chuỗi hành động QK', ex: 'I woke up, brushed my teeth and left.' }
+                ],
+                exceptions: 'Lỗi sai phổ biến: mượn "did" nhưng quên đưa động từ chính về nguyên thể.',
+                tobe: {
+                    formula: { aff: 'S + was/were + N/Adj', neg: 'S + was/were not + N/Adj', yno: 'Was/Were + S + N/Adj?', wh: 'Wh- + was/were + S + N/Adj?' },
+                    rules: 'I/He/She/It ➜ was. You/We/They ➜ were.',
+                    examples: [
+                        { en: 'I was very tired yesterday.', vi: 'Hôm qua tôi rất mệt.' },
+                        { en: 'They were not at home last night.', vi: 'Tối qua họ không có ở nhà.' }
+                    ],
+                    compVerb: 'I was happy yesterday.'
+                },
+                action: {
+                    formula: { aff: 'S + V2/ed', neg: 'S + did not + V', yno: 'Did + S + V?', wh: 'Wh- + did + S + V?' },
+                    rules: 'Động từ thêm -ed hoặc tra cột 2 (V2). Phủ định dùng did not (didn\'t) + V nguyên thể.',
+                    examples: [
+                        { en: 'I studied English last night.', vi: 'Tôi đã học tiếng Anh tối qua.' },
+                        { en: 'Did you see him ago?', vi: 'Bạn có thấy anh ấy không?' }
+                    ],
+                    compVerb: 'I studied English yesterday.'
+                }
+            },
+            {
+                id: 'past_continuous', nameEn: 'Past Continuous', nameVi: 'Quá khứ tiếp diễn',
+                desc: 'Diễn tả hành động đang diễn ra tại một thời điểm cụ thể trong quá khứ.',
+                keywords: ['at 8 PM yesterday', 'at this time last year', 'when', 'while'],
+                usages: [
+                    { rule: 'Đang xảy ra tại mốc QK', ex: 'At 9 PM, I was watching TV.' },
+                    { rule: 'Bị cắt ngang', ex: 'He called while I was sleeping.' }
+                ],
+                exceptions: '"While" + QK tiếp diễn, "When" + QK đơn.',
+                tobe: {
+                    formula: { aff: 'S + was/were + being + Adj', neg: 'S + was/were not + being + Adj', yno: 'Was/Were + S + being + Adj?', wh: 'Wh- + was/were + S + being + Adj?' },
+                    rules: 'Tương tự HTTD, chỉ dùng "being" để miêu tả hành vi bất thường tại một lúc trong quá khứ.',
+                    examples: [
+                        { en: 'He was being annoying yesterday.', vi: 'Hôm qua anh ta cư xử rất khó chịu.' }
+                    ],
+                    compVerb: 'I was being quiet at 8 PM.'
+                },
+                action: {
+                    formula: { aff: 'S + was/were + V-ing', neg: 'S + was/were not + V-ing', yno: 'Was/Were + S + V-ing?', wh: 'Wh- + was/were + S + V-ing?' },
+                    rules: 'Dùng was/were theo chủ ngữ + V-ing.',
+                    examples: [
+                        { en: 'I was studying English at 8 PM yesterday.', vi: 'Tôi đang học tiếng Anh lúc 8h tối qua.' },
+                        { en: 'While she was cooking, the phone rang.', vi: 'Khi cô ấy đang nấu ăn thì điện thoại reo.' }
+                    ],
+                    compVerb: 'I was studying English at 8 PM.'
+                }
+            },
+            {
+                id: 'past_perfect', nameEn: 'Past Perfect', nameVi: 'Quá khứ hoàn thành',
+                desc: 'Diễn tả hành động đã xảy ra và hoàn thành TRƯỚC một hành động khác trong quá khứ.',
+                keywords: ['before', 'after', 'by the time', 'by + tg trong QK'],
+                usages: [
+                    { rule: 'Xảy ra trước 1 hành động QK', ex: 'The train had left before I arrived.' }
+                ],
+                exceptions: 'Việc xảy ra TRƯỚC dùng QKHT (had V3), việc xảy ra SAU dùng QK đơn (V2).',
+                tobe: {
+                    formula: { aff: 'S + had + been + N/Adj', neg: 'S + had not + been + N/Adj', yno: 'Had + S + been + N/Adj?', wh: 'Wh- + had + S + been + N/Adj?' },
+                    rules: 'Luôn dùng "had been" cho mọi ngôi.',
+                    examples: [
+                        { en: 'I had been a teacher before I became a writer.', vi: 'Tôi đã làm giáo viên trước khi thành nhà văn.' },
+                        { en: 'She had been sick before the trip.', vi: 'Cô ấy đã ốm trước chuyến đi.' }
+                    ],
+                    compVerb: 'I had been a student before I met him.'
+                },
+                action: {
+                    formula: { aff: 'S + had + V3/ed', neg: 'S + had not + V3/ed', yno: 'Had + S + V3/ed?', wh: 'Wh- + had + S + V3/ed?' },
+                    rules: 'Dùng had + Động từ cột 3 (V3/ed).',
+                    examples: [
+                        { en: 'I had studied English before I moved to London.', vi: 'Tôi đã học tiếng Anh trước khi sang London.' },
+                        { en: 'After he had finished, he went home.', vi: 'Sau khi làm xong, anh ấy về nhà.' }
+                    ],
+                    compVerb: 'I had studied English before he arrived.'
+                }
+            },
+            {
+                id: 'past_perfect_continuous', nameEn: 'Past Perfect Continuous', nameVi: 'Quá khứ hoàn thành tiếp diễn',
+                desc: 'Nhấn mạnh sự liên tục của hành động kéo dài đến trước một hành động khác trong quá khứ.',
+                keywords: ['until then', 'by the time', 'for + tg'],
+                usages: [
+                    { rule: 'Kéo dài liên tục đến mốc QK', ex: 'I had been driving for hours before I stopped.' }
+                ],
+                exceptions: 'Chỉ dùng khi cần nhấn mạnh thời lượng.',
+                tobe: {
+                    formula: { aff: 'Không dùng', neg: 'Không dùng', yno: 'Không dùng', wh: 'Không dùng' },
+                    rules: 'Gần như không bao giờ dùng "had been being". Hãy dùng Quá khứ hoàn thành đơn thay thế.',
+                    examples: [
+                        { en: '✅ I had been sick for 3 days before I saw a doctor.', vi: 'Tôi đã ốm 3 ngày trước khi đi khám.' }
+                    ],
+                    compVerb: '(Không áp dụng)'
+                },
+                action: {
+                    formula: { aff: 'S + had been + V-ing', neg: 'S + had not been + V-ing', yno: 'Had + S + been + V-ing?', wh: 'Wh- + had + S + been + V-ing?' },
+                    rules: 'had been + V-ing',
+                    examples: [
+                        { en: 'I had been studying for 3 hours before he came.', vi: 'Tôi đã học suốt 3 tiếng trước khi anh ấy tới.' }
+                    ],
+                    compVerb: 'I had been studying English for hours before he called.'
+                }
+            },
+            {
+                id: 'future_simple', nameEn: 'Future Simple', nameVi: 'Tương lai đơn',
+                desc: 'Diễn tả một quyết định nảy ra ngay lúc nói, dự đoán chủ quan, hoặc lời hứa.',
+                keywords: ['tomorrow', 'next week', 'in + năm TL', 'think', 'promise'],
+                usages: [
+                    { rule: 'Quyết định tức thời', ex: 'I will open the window.' },
+                    { rule: 'Dự đoán (I think)', ex: 'I think it will rain.' }
+                ],
+                exceptions: 'Be going to (TL gần) dùng cho việc ĐÃ CÓ kế hoạch, will dùng khi KHÔNG CÓ kế hoạch trước.',
+                tobe: {
+                    formula: { aff: 'S + will be + N/Adj', neg: 'S + will not (won\'t) be + N/Adj', yno: 'Will + S + be + N/Adj?', wh: 'Wh- + will + S + be + N/Adj?' },
+                    rules: 'Dùng "will be" cho tất cả các ngôi.',
+                    examples: [
+                        { en: 'I will be a doctor.', vi: 'Tôi sẽ trở thành bác sĩ.' },
+                        { en: 'She won\'t be late.', vi: 'Cô ấy sẽ không đến trễ đâu.' }
+                    ],
+                    compVerb: 'I will be happy tomorrow.'
+                },
+                action: {
+                    formula: { aff: 'S + will + V', neg: 'S + won\'t + V', yno: 'Will + S + V?', wh: 'Wh- + will + S + V?' },
+                    rules: 'Động từ giữ nguyên mẫu không To sau will.',
+                    examples: [
+                        { en: 'I will study English tomorrow.', vi: 'Tôi sẽ học tiếng Anh ngày mai.' },
+                        { en: 'I promise I will help you.', vi: 'Tôi hứa tôi sẽ giúp bạn.' }
+                    ],
+                    compVerb: 'I will study English tomorrow.'
+                }
+            },
+            {
+                id: 'future_continuous', nameEn: 'Future Continuous', nameVi: 'Tương lai tiếp diễn',
+                desc: 'Diễn tả hành động sẽ ĐANG diễn ra tại một thời điểm xác định trong tương lai.',
+                keywords: ['at 8 PM tomorrow', 'at this time next week'],
+                usages: [
+                    { rule: 'Đang xảy ra tại mốc TL', ex: 'At 10 AM tomorrow, I will be flying to Paris.' }
+                ],
+                exceptions: 'Phải có mốc thời gian rõ ràng trong tương lai.',
+                tobe: {
+                    formula: { aff: 'Không dùng', neg: 'Không dùng', yno: 'Không dùng', wh: 'Không dùng' },
+                    rules: 'Không dùng "will be being". Thay bằng Tương lai đơn (will be).',
+                    examples: [
+                        { en: '✅ I will be at home at 8 PM tomorrow.', vi: 'Tôi sẽ ở nhà lúc 8h tối mai.' }
+                    ],
+                    compVerb: '(Không áp dụng)'
+                },
+                action: {
+                    formula: { aff: 'S + will be + V-ing', neg: 'S + won\'t be + V-ing', yno: 'Will + S + be + V-ing?', wh: 'Wh- + will + S + be + V-ing?' },
+                    rules: 'will be + V-ing.',
+                    examples: [
+                        { en: 'I will be studying English at 8 PM tomorrow.', vi: 'Tôi sẽ đang học tiếng Anh lúc 8h tối mai.' }
+                    ],
+                    compVerb: 'I will be studying English at 8 PM tomorrow.'
+                }
+            },
+            {
+                id: 'future_perfect', nameEn: 'Future Perfect', nameVi: 'Tương lai hoàn thành',
+                desc: 'Diễn tả hành động sẽ HOÀN THÀNH trước một thời điểm hoặc một hành động khác trong tương lai.',
+                keywords: ['by tomorrow', 'by next week', 'by the time'],
+                usages: [
+                    { rule: 'Hoàn tất trước mốc TL', ex: 'By 10 PM, I will have finished.' }
+                ],
+                exceptions: 'Trong mệnh đề "By the time", động từ chia ở Hiện Tại Đơn (By the time he comes, I will have left).',
+                tobe: {
+                    formula: { aff: 'S + will have been + N/Adj', neg: 'S + won\'t have been + N/Adj', yno: 'Will + S + have been + N/Adj?', wh: 'Wh- + will + S + have been + N/Adj?' },
+                    rules: 'Dùng will have been.',
+                    examples: [
+                        { en: 'By next year, we will have been married for 10 years.', vi: 'Tính tới năm sau, chúng tôi sẽ kết hôn (là vợ chồng) được 10 năm.' }
+                    ],
+                    compVerb: 'I will have been a student here for 3 years by tomorrow.'
+                },
+                action: {
+                    formula: { aff: 'S + will have + V3/ed', neg: 'S + won\'t have + V3/ed', yno: 'Will + S + have + V3/ed?', wh: 'Wh- + will + S + have + V3/ed?' },
+                    rules: 'will have + V3/ed.',
+                    examples: [
+                        { en: 'I will have studied English before I go to bed.', vi: 'Tôi sẽ học tiếng Anh xong trước khi ngủ.' }
+                    ],
+                    compVerb: 'I will have studied English by 9 PM.'
+                }
+            },
+            {
+                id: 'future_perfect_continuous', nameEn: 'Future Perfect Continuous', nameVi: 'Tương lai HT tiếp diễn',
+                desc: 'Nhấn mạnh tính liên tục của hành động cho tới một thời điểm trong tương lai.',
+                keywords: ['by next month, ... for 5 years'],
+                usages: [
+                    { rule: 'Nhấn mạnh thời lượng tới mốc TL', ex: 'By December, we will have been living here for 2 years.' }
+                ],
+                exceptions: 'Rất hiếm gặp, chỉ dùng để báo cáo tiến độ dài hạn.',
+                tobe: {
+                    formula: { aff: 'Không dùng', neg: 'Không dùng', yno: 'Không dùng', wh: 'Không dùng' },
+                    rules: 'Không dùng. Hãy dùng Tương lai hoàn thành đơn (will have been).',
+                    examples: [],
+                    compVerb: '(Không áp dụng)'
+                },
+                action: {
+                    formula: { aff: 'S + will have been + V-ing', neg: 'S + won\'t have been + V-ing', yno: 'Will + S + have been + V-ing?', wh: 'Wh- + will + S + have been + V-ing?' },
+                    rules: 'will have been + V-ing.',
+                    examples: [
+                        { en: 'By next year, I will have been studying English for 4 years.', vi: 'Năm sau tôi sẽ học tiếng Anh được tròn 4 năm.' }
+                    ],
+                    compVerb: 'I will have been studying English for 4 years by next year.'
+                }
+            }
+        ];
+
+        // State tracking
+        let selectedColumns = {
+            1: { tenseId: null, type: 'action' },
+            2: { tenseId: null, type: 'action' },
+            3: { tenseId: null, type: 'action' }
+        };
+
+        let currentEditingColumn = null;
+
+        // UI Functions
+        function openModal(colNum) {
+            currentEditingColumn = colNum;
+            document.getElementById('search-input').value = '';
+            filterTenses();
+            document.getElementById('modal').classList.add('active');
+            document.getElementById('search-input').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            currentEditingColumn = null;
+        }
+
+        function filterTenses() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const list = document.getElementById('tense-list');
+            list.innerHTML = '';
+
+            const filtered = tensesData.filter(t => 
+                t.nameEn.toLowerCase().includes(query) || 
+                t.nameVi.toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                list.innerHTML = '<div style="text-align:center; color:#64748b; padding: 2rem;">Không tìm thấy thì phù hợp.</div>';
+                return;
+            }
+
+            filtered.forEach(t => {
+                const item = document.createElement('div');
+                item.className = 'tense-item';
+                item.onclick = () => selectTense(t.id);
+                item.innerHTML = `
+                    <span class="tense-item-en">${t.nameEn}</span>
+                    <span class="tense-item-vi">${t.nameVi}</span>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function selectTense(tenseId) {
+            if (currentEditingColumn) {
+                selectedColumns[currentEditingColumn].tenseId = tenseId;
+                selectedColumns[currentEditingColumn].type = 'action'; // default to action verb
+                renderColumn(currentEditingColumn);
+                updateComparison();
+                closeModal();
+            }
+        }
+
+        function setVerbType(colNum, type) {
+            if (selectedColumns[colNum].tenseId) {
+                selectedColumns[colNum].type = type;
+                renderColumn(colNum);
+                updateComparison();
+            }
+        }
+
+        function clearColumn(colNum) {
+            selectedColumns[colNum] = { tenseId: null, type: 'action' };
+            const col = document.getElementById(`col-${colNum}`);
+            col.innerHTML = `
+                <div class="col-empty">
+                    <div class="icon">🔍</div>
+                    <p>Cột trống. Hãy chọn một thì để bắt đầu.</p>
+                    <button class="btn btn-primary" onclick="openModal(${colNum})">+ CHỌN THÌ</button>
+                </div>
+            `;
+            updateComparison();
+        }
+
+        function clearAll() {
+            [1, 2, 3].forEach(colNum => clearColumn(colNum));
+        }
+
+        function renderColumn(colNum) {
+            const colState = selectedColumns[colNum];
+            const tense = tensesData.find(t => t.id === colState.tenseId);
+            const col = document.getElementById(`col-${colNum}`);
+
+            if (!tense) return;
+
+            const verbData = colState.type === 'tobe' ? tense.tobe : tense.action;
+
+            let tagsHtml = tense.keywords.map(k => `<span class="tag">${k}</span>`).join('');
+
+            let examplesHtml = verbData.examples.length > 0 
+                ? verbData.examples.map(ex => `
+                    <div class="example-box">
+                        <div class="ex-en">${ex.en}</div>
+                        <div class="ex-vi">${ex.vi}</div>
+                    </div>
+                `).join('')
+                : '<p style="color:#64748b; font-style:italic; background:#f1f5f9; padding: 1rem; border-radius: 6px;">Cấu trúc To Be này không tồn tại hoặc rất ít khi được sử dụng trong tiếng Anh. Hãy dùng thì đơn tương ứng.</p>';
+
+            let usagesHtml = tense.usages.map(u => `
+                <li><strong>${u.rule}:</strong> <i>${u.ex}</i></li>
+            `).join('');
+
+            col.innerHTML = `
+                <div class="col-header">
+                    <div class="col-title">
+                        <h2>${tense.nameEn}</h2>
+                        <span>${tense.nameVi}</span>
+                    </div>
+                    <div class="col-actions">
+                        <button class="btn btn-outline" onclick="openModal(${colNum})">ĐỔI</button>
+                        <button class="btn btn-outline" style="color:var(--danger)" onclick="clearColumn(${colNum})">XÓA</button>
+                    </div>
+                </div>
+                
+                <div class="toggle-group">
+                    <button class="toggle-btn ${colState.type === 'tobe' ? 'active' : ''}" onclick="setVerbType(${colNum}, 'tobe')">Động từ TO BE</button>
+                    <button class="toggle-btn ${colState.type === 'action' ? 'active' : ''}" onclick="setVerbType(${colNum}, 'action')">Động từ THƯỜNG</button>
+                </div>
+
+                <div class="col-content">
+                    <div class="section">
+                        <div class="section-title">✨ Ý nghĩa</div>
+                        <p>${tense.desc}</p>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">📝 Công thức (${colState.type === 'tobe' ? 'To Be' : 'Thường'})</div>
+                        <div class="formula-box">
+                            <div class="formula-row">
+                                <span class="formula-label">(+)</span>
+                                <span>${verbData.formula.aff}</span>
+                            </div>
+                            <div class="formula-row">
+                                <span class="formula-label">(-)</span>
+                                <span>${verbData.formula.neg}</span>
+                            </div>
+                            <div class="formula-row">
+                                <span class="formula-label">(?)</span>
+                                <span>${verbData.formula.yno}</span>
+                            </div>
+                            <div class="formula-row">
+                                <span class="formula-label">(W)</span>
+                                <span>${verbData.formula.wh}</span>
+                            </div>
+                        </div>
+                        <p style="font-size:0.9rem; color:#475569;"><em>Quy tắc: ${verbData.rules}</em></p>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="section-title">💡 Ví dụ (${colState.type === 'tobe' ? 'To Be' : 'Thường'})</div>
+                        ${examplesHtml}
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">🔑 Dấu hiệu nhận biết chung</div>
+                        <div class="keyword-tags">
+                            ${tagsHtml}
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">🎯 Cách dùng chính</div>
+                        <ul>
+                            ${usagesHtml}
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title" style="color:var(--warning)">⚠️ Lưu ý / Lỗi sai</div>
+                        <div class="warning-box">
+                            ${tense.exceptions}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateComparison() {
+            const activeCols = [];
+            [1, 2, 3].forEach(colNum => {
+                if (selectedColumns[colNum].tenseId) {
+                    const tense = tensesData.find(t => t.id === selectedColumns[colNum].tenseId);
+                    if (tense) {
+                        activeCols.push({ tense: tense, type: selectedColumns[colNum].type });
+                    }
+                }
+            });
+
+            const compSection = document.getElementById('comparison-section');
+            if (activeCols.length < 2) {
+                compSection.style.display = 'none';
+                return;
+            }
+
+            compSection.style.display = 'block';
+            
+            const thead = document.getElementById('comp-head');
+            const tbody = document.getElementById('comp-body');
+
+            // Generate Headers
+            let headHtml = '<tr>';
+            activeCols.forEach(col => {
+                const typeLabel = col.type === 'tobe' ? 'TO BE' : 'THƯỜNG';
+                headHtml += `<th>${col.tense.nameEn} <span class="badge-type">${typeLabel}</span><br><span style="font-size:0.85rem; font-weight:normal; color:#64748b">${col.tense.nameVi}</span></th>`;
+            });
+            headHtml += '</tr>';
+            thead.innerHTML = headHtml;
+
+            // Generate Rows
+            let bodyHtml = '';
+
+            // Row: Ý nghĩa chính
+            bodyHtml += '<tr>';
+            activeCols.forEach(col => {
+                bodyHtml += `<td><span class="comp-label">Khác biệt ý nghĩa</span>${col.tense.desc}</td>`;
+            });
+            bodyHtml += '</tr>';
+
+            // Row: Công thức (dựa trên type đã chọn)
+            bodyHtml += '<tr>';
+            activeCols.forEach(col => {
+                const formula = col.type === 'tobe' ? col.tense.tobe.formula.aff : col.tense.action.formula.aff;
+                bodyHtml += `<td><span class="comp-label">Công thức khẳng định</span><strong>${formula}</strong></td>`;
+            });
+            bodyHtml += '</tr>';
+
+            // Row: Dấu hiệu
+            bodyHtml += '<tr>';
+            activeCols.forEach(col => {
+                bodyHtml += `<td><span class="comp-label">Dấu hiệu phổ biến</span>${col.tense.keywords.slice(0,4).join(', ')}...</td>`;
+            });
+            bodyHtml += '</tr>';
+
+            // Row: Ví dụ đối chiếu
+            bodyHtml += '<tr>';
+            activeCols.forEach(col => {
+                const compVerb = col.type === 'tobe' ? col.tense.tobe.compVerb : col.tense.action.compVerb;
+                bodyHtml += `<td><span class="comp-label">Ví dụ đối chiếu cấu trúc</span><em style="color:var(--primary); font-weight:bold">"${compVerb}"</em></td>`;
+            });
+            bodyHtml += '</tr>';
+
+            tbody.innerHTML = bodyHtml;
+        }
+
+        // Close modal on click outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
